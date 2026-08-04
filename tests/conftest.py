@@ -7,6 +7,7 @@ import pytest
 from industry_rotation.config import ExperimentConfig, load_config
 from industry_rotation.features import BASELINE_FEATURES
 from industry_rotation.samples import continuity_codes
+from examples.generate_synthetic_panel import generate_synthetic_panel
 
 
 @pytest.fixture
@@ -96,3 +97,8 @@ def daily_bundle() -> tuple[pd.DataFrame, pd.DataFrame]:
         }
     )
     return pd.DataFrame(industry_rows), hs300
+
+
+@pytest.fixture
+def synthetic_panel() -> pd.DataFrame:
+    return generate_synthetic_panel()

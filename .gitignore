@@ -17,6 +17,8 @@ models/
 *.docx
 *.xlsx
 *.pptx
+*.zip
+*.7z
 .env*
 .idea/
 .vscode/

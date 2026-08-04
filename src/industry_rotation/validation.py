@@ -51,6 +51,7 @@ def _prediction_frame(frame: pd.DataFrame, model: str, candidate_id: str, scores
         "next_month_return",
         "next_month_hs300_return",
         "next_month_excess_return",
+        "source",
     ]
     result = frame.loc[:, [column for column in columns if column in frame]].copy()
     result["model"] = model
