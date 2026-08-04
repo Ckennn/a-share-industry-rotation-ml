@@ -1,0 +1,31 @@
+split:
+  train_end: "20221231"
+  validation_end: "20231231"
+  test_end: "20260531"
+portfolio:
+  top_n: 3
+  cost_rate: 0.001
+bootstrap:
+  block_months: 3
+  simulations: 50
+  seed: 42
+walk_forward_start: "20210101"
+walk_forward_end: "20210331"
+min_core_train_months: 60
+validation_months: 12
+random_state: 42
+n_jobs: 1
+random_top3_simulations: 20
+models:
+  xgboost:
+    - id: xgboost_smoke
+      params: {n_estimators: 3, max_depth: 2, learning_rate: 0.03, subsample: 0.85, colsample_bytree: 0.85, reg_lambda: 5.0}
+  lightgbm:
+    - id: lightgbm_smoke
+      params: {n_estimators: 3, learning_rate: 0.03, num_leaves: 7, max_depth: 2, min_child_samples: 10, subsample: 0.85, colsample_bytree: 0.85, reg_lambda: 5.0}
+  random_forest:
+    - id: random_forest_smoke
+      params: {n_estimators: 3, max_depth: 3, min_samples_leaf: 3, max_features: sqrt}
+  linear_lasso:
+    - id: linear_lasso_smoke
+      params: {alpha: 0.001}
