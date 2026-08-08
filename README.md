@@ -4,6 +4,22 @@ This repository provides a code-only reproduction of a controlled comparison of 
 
 The evidence motivating this software is conditional: model rankings can change across estimation windows and evaluation protocols. The repository is therefore designed to expose benchmarks and temporal audits, not to present a permanent winning strategy.
 
+## Empirical Results at a Glance
+
+The figures below summarise the historical-data results reported in the dissertation. They are not outputs of the synthetic smoke workflow, and the underlying licensed market data are not redistributed in this repository.
+
+![Annualised net return by evaluation window](docs/figures/annualized_return_by_evaluation_window.png)
+
+The 29-month fixed-split test from `2024-01` to `2026-05` produced strong return estimates. Under the common Top3 equal-weight rule and a cost of `0.001 x one-way target-weight turnover`, Random Forest achieved a 40.4% annualised net return, compared with 35.2% for the trailing 3M industry-return rule, 27.4% for XGBoost, and 16.7% for Industry Equal Weight. Over the longer `2021-01` to `2026-05` clean walk-forward evaluation, the tree-model return estimates were materially weaker; Linear Lasso and LightGBM recorded the highest supervised-model point estimates at 5.7% and 4.9% respectively.
+
+![Fixed-split cumulative net returns](docs/figures/fixed_split_cumulative_returns.png)
+
+The fixed-split return path is informative but does not by itself establish persistent forecasting skill. The figure shows the core supervised models and passive benchmarks; the trailing 3M rule is reported separately above because it is the strongest simple return benchmark in this window.
+
+![Rank IC with moving-block uncertainty](docs/figures/rank_ic_uncertainty.png)
+
+XGBoost and Random Forest show positive fixed-window Rank IC evidence. In the clean prior-only walk-forward evaluation, however, the main Rank IC intervals include zero. The study therefore does not identify a universally superior model. Its central finding is that tree models can provide useful industry-ranking information in some periods, while the apparent advantage remains sensitive to the estimation history and evaluation protocol.
+
 ## Scope
 
 Included:
@@ -15,16 +31,19 @@ Included:
 - tree models, Linear Lasso, momentum, passive, and Random Top3 benchmarks;
 - Rank IC, selection-excess, portfolio-risk, bootstrap, and leakage-audit utilities;
 - a deterministic synthetic panel for tests and examples.
+- selected aggregate study figures for research context.
 
 Excluded:
 
 - dissertation text and presentation files;
-- downloaded papers, databases, market data, trained models, and empirical outputs;
+- downloaded papers, databases, market data, trained models, and raw empirical outputs;
 - post-hoc diagnostic specifications outside the core comparison protocol.
 
 ## Data Boundary
 
 SWS Research is the publisher of the Shenwan index series. AKShare is an access interface, not the data publisher. This repository does not redistribute the historical quotes used in the study. Users must obtain data under the applicable provider and interface terms. See [docs/data_contract.md](docs/data_contract.md).
+
+The selected figures above contain aggregate strategy results only. They do not include the underlying quotations, model predictions, or monthly portfolio-return tables.
 
 ## Installation
 
